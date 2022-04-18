@@ -8,8 +8,10 @@ $charset= "utf8mb4";
 $dsn = "mysql:host=$host;dbnamae=$db;charset=;charset=$charset";
 try {
 $pdo = new PDO($dsn,$username,$password);
-echo "seccsesful";
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } 
 catch(PDOException $e) {
   throw new PDOException($e->getMessage());
 }
+require_once "CRUD.php";
+$crud = new CRUD($pdo);
