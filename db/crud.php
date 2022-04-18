@@ -6,7 +6,7 @@ class crud{
     function __construct($conn){
         $this->db = $conn;
     }
-    public function insert($fname,$lname,$dob,$email,contract,$specilaty){
+    public function insert($fname, $lname ,  $dob , $email ,  $phone , $speciality ){ 
         try {
             $sql = "INSERT INTO attende VALUES (:fname,:lname,:dob,:contract,:speciality)";
             $stmt = $this->db->prepare($sql);
@@ -14,10 +14,12 @@ class crud{
             $stmt->bindparam(":fname",$fname);
             $stmt->bindparam(":lname",$lname);
             $stmt->bindparam(":dob",$dob);
-            $stmt->bindparam(":contract",$contract);
+            $stmt->bindparam(":contract",$phone);
             $stmt->bindparam(":speciality",$speciality);
+            $stmt->bindparam(":email",$email);
         } catch (\Throwable $th) {
             //throw $th;
         }
     }
 }
+
